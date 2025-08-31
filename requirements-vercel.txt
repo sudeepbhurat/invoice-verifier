@@ -1,5 +1,5 @@
 # Vercel Production Requirements
-# Optimized for deployment without development dependencies
+# Optimized for serverless deployment
 
 fastapi==0.104.1
 uvicorn==0.24.0
@@ -7,8 +7,6 @@ pdfminer.six==20221105
 python-dateutil==2.8.2
 pydantic==2.5.0
 python-multipart==0.0.6
-jinja2==3.1.2
-aiofiles==23.2.1
 
-# Note: Removed pillow and pyzbar for Vercel deployment
-# These can be added back if needed for image processing
+# Note: Removed jinja2, aiofiles, pillow, pyzbar for Vercel compatibility
+# These libraries can cause issues in serverless environments
