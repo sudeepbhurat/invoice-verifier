@@ -1,0 +1,51 @@
+Sample Invoice Data for Testing
+
+Use these values in the Manual Entry form to test the verification system:
+
+Vendor GSTIN: 09AABCU6223H2ZB
+Invoice Number: GDDAIJEB25001819
+Invoice Date: 25 Jun 2025
+Place of Supply: Uttar Pradesh
+HSN Code: 996412
+Taxable Value: ₹133.29
+CGST Rate: 2.5
+CGST Amount: ₹3.33
+SGST Rate: 2.5
+SGST Amount: ₹3.33
+Total Amount: ₹139.95
+
+Expected Results:
+- GSTIN Structure: PASS (valid format and checksum)
+- Invoice Number Format: PASS (complies with Rule 46)
+- Invoice Date: PASS (parsed successfully)
+- Place of Supply Consistency: PASS (matches GSTIN state)
+- HSN Format: PASS (6 digits, valid format)
+- Arithmetic Checks: PASS (taxes and totals consistent)
+- Duplicate Check: PASS (first time verification)
+
+Total Score: 100/100
+Verdict: PASS
+
+Alternative Test Data (with issues):
+
+Vendor GSTIN: 09AABCU6223H2Z (missing last character)
+Invoice Number: INV-12345678901234567 (too long)
+Invoice Date: 32 Feb 2025 (invalid date)
+Place of Supply: Maharashtra (different from GSTIN state)
+HSN Code: ABC123 (invalid format)
+Taxable Value: ₹100.00
+CGST Rate: 5.0
+CGST Amount: ₹10.00 (incorrect calculation)
+Total Amount: ₹110.00
+
+Expected Results:
+- GSTIN Structure: FAIL (checksum mismatch)
+- Invoice Number Format: FAIL (exceeds 16 characters)
+- Invoice Date: FAIL (invalid date)
+- Place of Supply Consistency: WARN (state mismatch)
+- HSN Format: FAIL (contains letters)
+- Arithmetic Checks: FAIL (CGST calculation error)
+- Duplicate Check: INFO (not checked due to validation failures)
+
+Total Score: 0/100
+Verdict: FAIL
